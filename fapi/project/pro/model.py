@@ -1,8 +1,8 @@
 import sqlalchemy
-from sqlalchemy import Column,create_engine
-from sqlalchemy import FLOAT,VARCHAR
+from sqlalchemy import Column, create_engine, ARRAY
+from sqlalchemy import FLOAT, VARCHAR
 from sqlalchemy.ext.declarative import declarative_base
-
+from sqlalchemy.dialects import postgresql
 Base = declarative_base()
 
 
@@ -15,17 +15,18 @@ class pincode(Base):
     longitude = Column('longitude', FLOAT)
 
 
-def __repr__(self):
-    return "<pincode(pincode='{}', address='{}',city='{}',latitude={},longitude={})>".format(self.pincode, self.address,
-                                                                                             self.city, self.latitude,
-                                                                                             self.longitude)
+class geojson(Base):
+    __tablename__ = 'geojson'
+    name = Column('name', VARCHAR, primary_key=True)
+    type = Column('type', VARCHAR)
+    parent = Column('parent', VARCHAR)
+    coordinates = Column('coordinates', postgresql.ARRAY(FLOAT))
 
 
 SQLALCHEMY_DATABASE_URL = "postgresql+psycopg2://postgres:postgres@localhost:5432/pincode"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL, echo=True)
 conn = engine.connect()
-
 try:
     print('your connection ok \n connection object is:{}'.format(conn))
 except:

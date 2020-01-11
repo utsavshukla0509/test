@@ -31,3 +31,11 @@ def test_post_data(db, pin='IN/110001', add='Connaught Place', ci='New Delhi', l
         user.latitude = lat
         user.longitude = lon
         assert crud.post_items(db, user) == "item already existed"
+
+
+def test_fetch_city(db, lat=28.6167, lon=77.2167):
+    with pytest.raises(Exception):
+        user = schemas.Userin()
+        user.latitude = lat
+        user.longitude = lon
+        assert crud.fetch_city(db, user) == {"name": "Greater Noida"}

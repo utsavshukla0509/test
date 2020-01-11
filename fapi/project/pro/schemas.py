@@ -1,5 +1,13 @@
 from pydantic import BaseModel
-from sqlalchemy import VARCHAR,FLOAT
+from sqlalchemy import VARCHAR, FLOAT
+
+
+class allpin(BaseModel):
+    pincode: str
+
+
+class place(BaseModel):
+    name: str
 
 
 class User(BaseModel):

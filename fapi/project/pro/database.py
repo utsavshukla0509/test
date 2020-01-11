@@ -14,4 +14,4 @@ try:
 except:
     print('your connection not connected')
 
-# Base.metadata.create_all(engine)
+Base.metadata.create_all(engine)
