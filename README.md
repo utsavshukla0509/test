@@ -21,6 +21,7 @@ DESCRIPTION:
 
 MAIN FILES:
          model.py --- create a database tables(pincode and geojson) and connection.
+         
          schemas.py --- create a model attribute or columns.
          crud.py --- resolve queries with reusable functions to interact with the data in the database.
                       CRUD comes from: Create, Read, Update, and Delete.
@@ -35,5 +36,5 @@ ADDITIONAL FILES:
          
          json_demo.py,json_path,database.py is used for demo purposes.
          
-          
+         
                
